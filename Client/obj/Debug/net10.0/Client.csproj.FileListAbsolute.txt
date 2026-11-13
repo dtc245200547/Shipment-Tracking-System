@@ -1,0 +1,14 @@
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\bin\Debug\net10.0\Client.exe
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\bin\Debug\net10.0\Client.deps.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\bin\Debug\net10.0\Client.runtimeconfig.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\bin\Debug\net10.0\Client.dll
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\bin\Debug\net10.0\Client.pdb
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.GeneratedMSBuildEditorConfig.editorconfig
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.AssemblyInfoInputs.cache
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.AssemblyInfo.cs
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.csproj.CoreCompileInputs.cache
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.dll
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\refint\Client.dll
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.pdb
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.genruntimeconfig.cache
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\ref\Client.dll
