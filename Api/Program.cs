@@ -10,7 +10,21 @@ var shipments = new List<ShipmentDto>
 
 app.MapGet("/", () => Results.Ok(new { service = "Shipment Tracking API", status = "Running" }));
 
-app.MapGet("/api/shipments", () => Results.Ok(shipments));
+app.MapGet("/api/shipments", (string? keyword) =>
+{
+    // Nếu không truyền keyword, trả về toàn bộ danh sách
+    if (string.IsNullOrWhiteSpace(keyword))
+    {
+        return Results.Ok(shipments);
+    }
+    
+    // Nếu có keyword, lọc ra các lô hàng có mã vận đơn (TrackingNumber) chứa từ khóa đó
+    var filteredShipments = shipments
+        .Where(s => s.TrackingNumber.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+        .ToList();
+        
+    return Results.Ok(filteredShipments);
+});
 
 app.MapGet("/api/shipments/{id:int}", (int id) =>
 {
