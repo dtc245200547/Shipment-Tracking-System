@@ -1,4 +1,10 @@
+using Microsoft.AspNetCore.SignalR; // Thêm thư viện SignalR
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Đăng ký dịch vụ SignalR
+builder.Services.AddSignalR();
+
 var app = builder.Build();
 
 var shipments = new List<ShipmentDto>
@@ -36,7 +42,8 @@ app.MapGet("/api/shipments/{id:int}", (int id) =>
     return Results.Ok(shipment);
 });
 
-app.MapPost("/api/shipments", (CreateShipmentRequest request) =>
+// Tiêm IHubContext vào POST để phát sự kiện SignalR
+app.MapPost("/api/shipments", async (CreateShipmentRequest request, IHubContext<ShipmentHub> hubContext) =>
 {
     if (string.IsNullOrWhiteSpace(request.TrackingNumber) || request.Cost <= 0)
     {
@@ -54,11 +61,36 @@ app.MapPost("/api/shipments", (CreateShipmentRequest request) =>
     
     shipments.Add(newShipment);
     
+    // Phát thông báo Real-time (Broadcast) cho tất cả các Client
+    await hubContext.Clients.All.SendAsync("SystemAlert", $"[Hệ thống] Lô hàng mới {newShipment.TrackingNumber} vừa được khởi tạo!");
+    
     return Results.Created($"/api/shipments/{nextId}", newShipment);
 });
 
+// Ánh xạ endpoint cho SignalR Hub
+app.MapHub<ShipmentHub>("/hubs/shipment");
+
 app.Run();
 
+// --- Lớp Hub quản lý kết nối SignalR ---
+public class ShipmentHub : Hub
+{
+    // Chạy khi có một máy khách kết nối vào
+    public override async Task OnConnectedAsync()
+    {
+        await Clients.All.SendAsync("SystemAlert", $"[Hệ thống] Một client vừa kết nối: {Context.ConnectionId}");
+        await base.OnConnectedAsync();
+    }
+
+    // Cho phép máy khách đăng ký theo dõi 1 mã vận đơn cụ thể (Group)
+    public async Task JoinTrackingGroup(string trackingNumber)
+    {
+        await Groups.AddToGroupAsync(Context.ConnectionId, trackingNumber);
+        await Clients.Caller.SendAsync("SystemAlert", $"[Thông báo] Bạn đã đăng ký nhận thông báo cho mã vận đơn: {trackingNumber}");
+    }
+}
+
+// --- DTOs ---
 public record ShipmentDto(int Id, string TrackingNumber, string? Route, decimal Cost, string Status);
 public record CreateShipmentRequest(string TrackingNumber, string? Route, decimal Cost);
 public record ApiError(string Code, string Message);
