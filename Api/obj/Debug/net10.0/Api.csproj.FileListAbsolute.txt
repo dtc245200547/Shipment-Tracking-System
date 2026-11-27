@@ -27,3 +27,17 @@ D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj
 D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\Api.genruntimeconfig.cache
 D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\ref\Api.dll
 D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\Api.sourcelink.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\bin\Debug\net10.0\Api.staticwebassets.runtime.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\bin\Debug\net10.0\Api.runtimeconfig.dev.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\HotReload\Microsoft.NET.Sdk.BlazorWeb.HotReload.lib.module.js
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\HotReload\Microsoft.NET.Sdk.BlazorWeb.HotReload.BrowserTools.js
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\HotReload\Microsoft.NET.Sdk.BlazorWeb.HotReload.BrowserTools.Config.js
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\HotReload\browser-tools-key.public.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\HotReload\browser-tools-key.private.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\jsmodules\jsmodules.build.manifest.json
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\scopedcss\scopedcss.cache
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\compressed\zn285hx4pp-{0}-tchfgznwy8-tchfgznwy8.gz
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\compressed\puhezwbmx7-{0}-tqrfy8u8kx-tqrfy8u8kx.gz
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\compressed\yupdbjaby7-{0}-v1vy2to33n-v1vy2to33n.gz
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\compressed\j6sn7bzcxy-{0}-ysew0n4kjn-ysew0n4kjn.gz
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Api\obj\Debug\net10.0\Api.csproj.Up2Date

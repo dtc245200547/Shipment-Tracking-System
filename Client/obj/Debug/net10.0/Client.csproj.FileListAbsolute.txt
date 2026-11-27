@@ -38,3 +38,4 @@ D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\
 D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.csproj.AssemblyReference.cache
 D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.sourcelink.json
 D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\obj\Debug\net10.0\Client.csproj.Up2Date
+D:\NAM3\KI 2\Phat_trien_ung_dung_phan_tan\DU_AN\Shipment-Tracking-System\Client\bin\Debug\net10.0\Client.runtimeconfig.dev.json

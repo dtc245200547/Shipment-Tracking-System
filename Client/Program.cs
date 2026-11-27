@@ -1,14 +1,15 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.SignalR.Client; // Thêm thư viện SignalR
 
-var baseUrl = args.Length > 0 ? args[0] : "http://localhost:5100";
+var baseUrl = args.Length > 0 ? args[0] : "http://localhost:5050";
+var trackedCode = args.Length > 1 ? args[1] : "SP002";
 
 // =======================================================
 // PHẦN 1: KẾT NỐI SIGNALR (LẮNG NGHE THÔNG BÁO REAL-TIME)
 // =======================================================
 Console.WriteLine("--- KET NOI SIGNALR (NOTIFICATION SERVICE) ---");
-var hubConnection = new HubConnectionBuilder()
+await using var hubConnection = new HubConnectionBuilder()
     .WithUrl($"{baseUrl}/hubs/shipment")
     .WithAutomaticReconnect()
     .Build();
@@ -22,12 +23,40 @@ hubConnection.On<string>("SystemAlert", (message) =>
     Console.ResetColor();
 });
 
+// Đăng ký nhận thông báo theo nhóm mã vận đơn qua sự kiện "GroupAlert"
+hubConnection.On<string>("GroupAlert", (message) =>
+{
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine($"\n[GROUP ALERT] {message}");
+    Console.ResetColor();
+});
+
+// Xử lý vòng đời kết nối trước khi StartAsync
+hubConnection.Reconnecting += error =>
+{
+    Console.WriteLine($"\n[SignalR] Đang thử kết nối lại... ({error?.Message})");
+    return Task.CompletedTask;
+};
+
+hubConnection.Reconnected += async connectionId =>
+{
+    Console.WriteLine($"\n[SignalR] Đã kết nối lại (Id: {connectionId}). Đăng ký lại nhóm {trackedCode}...");
+    await hubConnection.InvokeAsync("JoinTrackingGroup", trackedCode);
+};
+
+hubConnection.Closed += error =>
+{
+    Console.WriteLine($"\n[SignalR] Kết nối đã đóng. {(error != null ? $"Lỗi: {error.Message}" : "")}");
+    return Task.CompletedTask;
+};
+
 // Bắt đầu mở kết nối
 await hubConnection.StartAsync();
 Console.WriteLine("Da ket noi SignalR thanh cong!\n");
 
-// Đăng ký theo dõi riêng lộ trình của lô hàng SP002 (Test chức năng Group)
-await hubConnection.InvokeAsync("JoinTrackingGroup", "SP002");
+// Đăng ký theo dõi riêng lộ trình của lô hàng (Test chức năng Group)
+await hubConnection.InvokeAsync("JoinTrackingGroup", trackedCode);
+await hubConnection.InvokeAsync("SendToTrackingGroup", trackedCode, $"Client đang theo dõi {trackedCode}");
 
 
 // =======================================================

@@ -75,11 +75,20 @@ app.Run();
 // --- Lớp Hub quản lý kết nối SignalR ---
 public class ShipmentHub : Hub
 {
+    private string ShortId => Context.ConnectionId.Length > 8 ? Context.ConnectionId[..8] : Context.ConnectionId;
+
     // Chạy khi có một máy khách kết nối vào
     public override async Task OnConnectedAsync()
     {
-        await Clients.All.SendAsync("SystemAlert", $"[Hệ thống] Một client vừa kết nối: {Context.ConnectionId}");
+        await Clients.All.SendAsync("SystemAlert", $"[Hệ thống] Một client vừa kết nối: {ShortId}");
         await base.OnConnectedAsync();
+    }
+
+    // Chạy khi một máy khách ngắt kết nối
+    public override async Task OnDisconnectedAsync(Exception? exception)
+    {
+        await Clients.All.SendAsync("SystemAlert", $"[Hệ thống] Client {ShortId} đã ngắt kết nối.");
+        await base.OnDisconnectedAsync(exception);
     }
 
     // Cho phép máy khách đăng ký theo dõi 1 mã vận đơn cụ thể (Group)
@@ -87,6 +96,13 @@ public class ShipmentHub : Hub
     {
         await Groups.AddToGroupAsync(Context.ConnectionId, trackingNumber);
         await Clients.Caller.SendAsync("SystemAlert", $"[Thông báo] Bạn đã đăng ký nhận thông báo cho mã vận đơn: {trackingNumber}");
+        await Clients.Group(trackingNumber).SendAsync("GroupAlert", $"[Nhóm {trackingNumber}] Client {ShortId} vừa tham gia theo dõi.");
+    }
+
+    // Gửi thông báo tới riêng các client đang theo dõi mã vận đơn
+    public async Task SendToTrackingGroup(string trackingNumber, string message)
+    {
+        await Clients.Group(trackingNumber).SendAsync("GroupAlert", $"[Nhóm {trackingNumber}] {message}");
     }
 }
 
